@@ -19,8 +19,6 @@
     <form method="post" action="${pageContext.request.contextPath}/Registration">
       <button type="submit" name="action" value="newAccount">새로운 계정 생성</button>
     </form>
-
-
   </div>
 
   </body>
