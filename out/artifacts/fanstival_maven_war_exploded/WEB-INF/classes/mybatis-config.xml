@@ -16,5 +16,6 @@
     <mappers>
         <mapper resource="fanstival.mapper/AccountMapper.xml" />
         <!-- 추가로 매퍼 파일 경로 입력 가능 -->
+        <mapper resource="fanstival.mapper/BoardMapper.xml" />
     </mappers>
 </configuration>
