@@ -1,26 +1,20 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>글 작성</title>
+    <meta charset="UTF-8">
+    <title>Create Board</title>
 </head>
 <body>
-<h1>글 작성</h1>
-<form method="post" action="${pageContext.request.contextPath}/board/write">
-    <table>
-        <tr>
-            <td>제목</td>
-            <td><input type="text" name="title"></td>
-        </tr>
-        <tr>
-            <td>작성자</td>
-            <td><input type="text" name="writer"></td>
-        </tr>
-        <tr>
-            <td>내용</td>
-            <td><textarea name="content" rows="10" cols="50"></textarea></td>
-        </tr>
-    </table>
-    <button type="submit" name="action" value="write">글 작성</button>
+<h1>Create Board</h1>
+<form method="post" action="/board/create">
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" required><br>
+    <label for="content">Content</label>
+    <textarea id="content" name="content" rows="10" cols="30" required></textarea><br>
+    <button type="submit">Create</button>
 </form>
+<a href="${pageContext.request.contextPath}/board/list">Cancel</a>
 </body>
 </html>

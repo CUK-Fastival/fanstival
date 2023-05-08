@@ -48,4 +48,5 @@
         DELETE FROM signon
         WHERE user_id = #{user_id}
     </delete>
+
 </mapper>

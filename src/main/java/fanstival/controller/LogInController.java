@@ -40,14 +40,18 @@ public class LogInController extends HttpServlet {
                 AccountMapper accountMapper = sqlSession.getMapper(AccountMapper.class);
                 Account account = accountMapper.getAccountByUserId(userId);
 
+
                 if (account != null && account.getUser_password().equals(password)) {
                     // 로그인 성공
                     System.out.println("로그인 성공");
                     String token = generateToken(account.getUser_id()); // JWT 토큰 생성
                     response.addHeader("Authorization", "Bearer " + token); // 헤더에 JWT 토큰 추가
-                    response.sendRedirect(request.getContextPath() + "/index.jsp");
+                    request.setAttribute("nickname", account.getUser_nick()); // 사용자의 닉네임 설정
+                    request.setAttribute("userId", account.getUser_id()); // 사용자의 아이디 설정
+                    request.getRequestDispatcher("/WEB-INF/jsp/mainPage/MainPage.jsp").forward(request, response);
                     return;
-                } else {
+                }
+                else {
                     // 로그인 실패
                     request.setAttribute("error", "Invalid username or password.");
                     request.getRequestDispatcher("/WEB-INF/jsp/account/SignOnForm.jsp").forward(request, response);
