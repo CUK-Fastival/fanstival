@@ -27,19 +27,18 @@ public class BoardController {
         }
         List<Board> boardList = boardService.getAllBoards();
         model.addAttribute("boardList", boardList);
-        return "board/list";
+        return "board/BoardList.jsp";
     }
 
-    // 게시글 생성 페이지 이동
-    @GetMapping("/create")
+    @GetMapping("/write")
     public String boardCreateForm(Model model) {
+        System.out.println("작동 성공");
         model.addAttribute("board", new Board());
-        return "board/create";
+        System.out.println("이동 성공");
+        return "board/BoardForm.jsp";
     }
 
-
-    // 게시글 생성 처리
-    @PostMapping("/create")
+    @PostMapping("/write")
     public String boardCreate(@ModelAttribute Board board, HttpSession session) {
         Account account = (Account) session.getAttribute("user");
         board.setWriter(account.getUser_id());
@@ -47,7 +46,6 @@ public class BoardController {
         System.out.println("게시물 생성 성공");
         return "redirect:/board/list";
     }
-
 
     // 게시글 수정 페이지 이동
     @GetMapping("/update/{board_id}")
@@ -58,15 +56,16 @@ public class BoardController {
     }
 
     // 게시글 수정 처리
-    @PostMapping("/update")
-    public String boardUpdate(@ModelAttribute Board board) {
+    @PostMapping("/update/{board_id}")
+    public String boardUpdate(@PathVariable int board_id, @ModelAttribute Board board) {
+        board.setBoard_id(board_id); // 수정할 게시글의 id 설정
         boardService.updateBoard(board);
         System.out.println("게시물 수정 성공");
         return "redirect:/board/list";
     }
 
     // 게시글 삭제 처리
-    @RequestMapping(value = "/delete/{board_id}", method = RequestMethod.DELETE)
+    @GetMapping("/delete/{board_id}")
     public String boardDelete(@PathVariable int board_id) {
         boardService.deleteBoard(board_id);
         System.out.println("게시물 삭제 성공");

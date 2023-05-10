@@ -4,11 +4,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Board</title>
 </head>
 <body>
 <h1>Create Board</h1>
-<form method="post" action="/board/create">
+<form method="post" action="/board/write">
     <label for="title">Title</label>
     <input type="text" id="title" name="title" required><br>
     <label for="content">Content</label>

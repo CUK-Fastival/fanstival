@@ -7,7 +7,9 @@
 <body>
 <h1>Main Page</h1>
 <p>Welcome, <%= request.getAttribute("nickname") %> (ID: <%= request.getAttribute("userId") %>)</p>
-<a href="/board/create">Write Board</a>
-<a href="/board/list">Board List</a>
+<a href="${pageContext.request.contextPath}./board/write">Write Board</a>
+<a href="${pageContext.request.contextPath}/board/list">Board List</a>
+
+
 </body>
 </html>
