@@ -4,7 +4,7 @@
 </head>
 <body>
 
-<form action="${pageContext.request.contextPath}/Login" method="post">
+<form action="${pageContext.request.contextPath}/login" method="post">
     <p>ID:</p>
     <input type="text" name="user_id"/>
     <br/>
